@@ -1,0 +1,6 @@
+[submodule ".vim/bundle/DoxygenToolkit.vim"]
+	path = .vim/bundle/DoxygenToolkit.vim
+	url = https://github.com/vim-scripts/DoxygenToolkit.vim.git
+[submodule ".vim/bundle/vim-sensible"]
+	path = .vim/bundle/vim-sensible
+	url = https://github.com/tpope/vim-sensible.git
