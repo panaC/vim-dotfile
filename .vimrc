@@ -17,7 +17,7 @@ let mapleader = ","
 " Use pathogen to easily modify the runtime path to include all plugins under
 " the ~/.vim/bundle directory
 filetype off                    " force reloading *after* pathogen loaded
-call pathogen#infect()
+call pathogen#infect('bundle/{}', '~/src/vim/bundle/{}')
 call pathogen#helptags()
 
 " Use Vim settings, rather than Vi settings (much better!).
@@ -165,5 +165,18 @@ nnoremap <leader>i :set list!<cr>
 " Speed up scrolling of the viewport slightly
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
+
+let g:DoxygenToolkit_briefTag_pre="\\brief "
+let g:DoxygenToolkit_paramTag_pre="\\param "
+let g:DoxygenToolkit_returnTag="\\return "
+let g:DoxygenToolkit_blockHeader="-----------------"
+let g:DoxygenToolkit_blockFooter="-----------------"
+let g:DoxygenToolkit_authorName="Pierre LEROUX"
+"let g:DoxygenToolkit_licenseTag="My own license"   <-- !!! Does not end with \"\<enter>"
+
+nnoremap <leader>w <C-w>v
+nnoremap <leader>, <C-w>w
+nnoremap <leader>q :wq<cr>
+nnoremap <leader>t :tabnext<cr>
 
 "EOF"
