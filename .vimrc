@@ -20,9 +20,6 @@ filetype off                    " force reloading *after* pathogen loaded
 call pathogen#infect('bundle/{}', '~/src/vim/bundle/{}')
 call pathogen#helptags()
 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -165,14 +162,6 @@ nnoremap <leader>i :set list!<cr>
 " Speed up scrolling of the viewport slightly
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
-
-let g:DoxygenToolkit_briefTag_pre="\\brief "
-let g:DoxygenToolkit_paramTag_pre="\\param "
-let g:DoxygenToolkit_returnTag="\\return "
-let g:DoxygenToolkit_blockHeader="-----------------"
-let g:DoxygenToolkit_blockFooter="-----------------"
-let g:DoxygenToolkit_authorName="Pierre LEROUX"
-"let g:DoxygenToolkit_licenseTag="My own license"   <-- !!! Does not end with \"\<enter>"
 
 nnoremap <leader>w <C-w>v
 nnoremap <leader>, <C-w>w
