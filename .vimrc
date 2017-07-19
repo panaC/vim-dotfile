@@ -157,7 +157,8 @@ nnoremap <leader>s :mksession<CR>
 set scrolloff=4
 
 " Toggle show/hide invisible caracters 
-nnoremap <leader>i :set list!<cr>
+" nnoremap <leader>i :set list!<cr>
+set list
 
 " Speed up scrolling of the viewport slightly
 nnoremap <C-e> 2<C-e>
@@ -167,5 +168,25 @@ nnoremap <leader>w <C-w>v
 nnoremap <leader>, <C-w>w
 nnoremap <leader>q :wq<cr>
 nnoremap <leader>t :tabnext<cr>
+nnoremap <leader>. :/^$<cr>
+
+" Highligh Tab
+" syntax match Tab /\t/
+" hi Tab gui=underline guifg=blue ctermbg=blue
+
+" :qa : Quit Vim tout les buffers seront perdue
+" :qwa : Quit Vim sauvegarde tout les buffers
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+nnoremap <leader>; :SyntasticCheck<cr>
+nnoremap <leader>< :NERDTreeToggle<cr>
 
 "EOF"
