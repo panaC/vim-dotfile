@@ -6,7 +6,9 @@
 " Created on 22/03/2017
 "
 
-
+" ************ START ************
+" *******************************
+"
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -14,28 +16,8 @@ set nocompatible
 " Replace leader caracter
 let mapleader = ","
 
-" Use pathogen to easily modify the runtime path to include all plugins under
-" the ~/.vim/bundle directory
-filetype off                    " force reloading *after* pathogen loaded
-call pathogen#infect('bundle/{}', '~/src/vim/bundle/{}')
-call pathogen#helptags()
-
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-" Backup for each file editing 
-set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set backupskip=/tmp/*,/private/tmp/*
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set writebackup
-
-set undofile		" keep an undo file (undo changes after closing)
-set history=50		" keep 50 lines of command line history
-set ruler			" show the cursor position all the time
-set showcmd			" display incomplete commands
-set incsearch		" do incremental searching
+" ************ STD **************
+" *******************************
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -102,12 +84,33 @@ if has('langmap') && exists('+langnoremap')
   set langnoremap
 endif
 
+" ********************************************
+" ************* plugin loader ****************
+" ********************************************
 
-" Add optional packages.
-"
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-packadd matchit
+" Use pathogen to easily modify the runtime path to include all plugins
+" under
+" the ~/.vim/bundle directory
+filetype off                    " force reloading *after* pathogen loaded
+call pathogen#infect('bundle/{}', '~/src/vim/bundle/{}')
+call pathogen#helptags()
+
+" ********************************************
+" ************* PARAMETER ********************
+" ********************************************
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" Backup for each file editing
+set backupdir=~/.vim-tmp,.
+set directory=~/.vim-tmp,.
+
+set undofile		" keep an undo file (undo changes after closing)
+set history=50		" keep 50 lines of command line history
+set ruler			" show the cursor position all the time
+set showcmd			" display incomplete commands
+set incsearch		" do incremental searching
 
 " Display the number of each line
 set number
@@ -123,35 +126,14 @@ set shiftwidth=4
 " shiftwidth, not tabstop
 set smarttab
 
-" Close the bracket after each opening
-inoremap ( ()<left>
-inoremap { {}<left>
-inoremap [ []<left>
-
-" auto close html tag
-abbr </> </<C-x><C-O>
-
-" Highlight all caracters that exceeds 80 colons
-highlight OverLength ctermbg=red ctermfg=white
-match OverLength /\%80v.\+/
-
 " Enable folding
 set foldenable
-
-" p en mode Visuel remplace le texte sélectionné par le registre "".
-vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 " Highlight current line
 set cursorline
 
 " highlight matching [{()}])
 set showmatch
-
-" turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
-
-" save session
-nnoremap <leader>s :mksession<CR>
 
 "keep 4 lines off the edges when scrolling
 set scrolloff=4
@@ -160,33 +142,64 @@ set scrolloff=4
 " nnoremap <leader>i :set list!<cr>
 set list
 
-" Speed up scrolling of the viewport slightly
-nnoremap <C-e> 2<C-e>
-nnoremap <C-y> 2<C-y>
-
-nnoremap <leader>w <C-w>v
-nnoremap <leader>, <C-w>w
-nnoremap <leader>q :wq<cr>
-nnoremap <leader>t :tabnext<cr>
-nnoremap <leader>. :/^$<cr>
+" Highlight all caracters that exceeds 80 colons
+highlight OverLength ctermbg=red ctermfg=white
+match OverLength /\%80v.\+/
 
 " Highligh Tab
 " syntax match Tab /\t/
 " hi Tab gui=underline guifg=blue ctermbg=blue
 
-" :qa : Quit Vim tout les buffers seront perdue
-" :qwa : Quit Vim sauvegarde tout les buffers
+" ***************************************************
+" ***************** PLUGIN **************************
+" ***************************************************
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Add optional packages.
+"
+" The matchit plugin makes the % command work better, but it is not backwards
+" compatible.
+packadd matchit
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+
+" ************************************************
+" ************** REMAP ***************************
+" ************************************************
+
+" Close the bracket after each opening
+inoremap ( ()<left>
+inoremap { {}<left>
+inoremap [ []<left>
+
+" p en mode Visuel remplace le texte sélectionné par le registre "".
+vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
+
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
+" leader ','
+nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader>s :mksession<CR>
+nnoremap <leader>w <C-w>v
+nnoremap <leader>, <C-w>w
+nnoremap <leader>q :wq<cr>
+nnoremap <leader>a :wqa<cr>
+nnoremap <leader>t :tabnext<cr>
+nnoremap <leader>. :/^$<cr>
 
 nnoremap <leader>; :SyntasticCheck<cr>
 nnoremap <leader>< :NERDTreeToggle<cr>
+
+" Commentaire :
+" :qa : Quit Vim tout les buffers seront perdue
+" :qwa : Quit Vim sauvegarde tout les buffers
+"
 
 "EOF"
