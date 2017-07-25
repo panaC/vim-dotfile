@@ -184,6 +184,7 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
+
 " leader ','
 nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <leader>s :mksession<CR>
@@ -194,8 +195,14 @@ nnoremap <leader>a :wqa<cr>
 nnoremap <leader>t :tabnext<cr>
 nnoremap <leader>. :/^$<cr>
 
-nnoremap <leader>; :SyntasticCheck<cr>
+nnoremap <leader>! :SyntasticCheck<cr>
 nnoremap <leader>< :NERDTreeToggle<cr>
+nnoremap <leader>i ^i#include "<Esc>$a.h"<Esc>j
+nnoremap <leader>r ireturn ;<Esc>i
+nnoremap <leader>& :source ~/.vimrc<CR>
+nnoremap <leader>m iint<Tab>main(void)<CR>{<Cr><Cr>}<Esc>k$i
+nnoremap <leader>; $a;
+nnoremap <leader>d ^gU<Cr>^y$i#ifndef <Esc>$a_H<Cr># define <Esc>pa_H<Cr><Cr>/* code */<Cr><Cr>#endif /* !<Esc>pa_H */<Esc>kk^
 
 " Commentaire :
 " :qa : Quit Vim tout les buffers seront perdue
